@@ -18,25 +18,37 @@ const ExperienceCard = ({ experience }) => {
       contentStyle={{
         background: "#1d1836",
         color: "#fff",
+        boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
+        border: "1px solid rgba(145, 94, 255, 0.2)",
+        borderRadius: "16px",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+      contentArrowStyle={{ borderRight: "7px solid #1d1836" }}
       date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
+      dateClassName='text-[#dfd9ff] font-semibold text-[15px]'
+      iconStyle={{ 
+        background: experience.iconBg, 
+        boxShadow: "0 0 0 4px #915EFF, inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05)" 
+      }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className='w-[70%] h-[70%] object-contain rounded-full'
           />
         </div>
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+        <div className='flex items-center justify-between flex-wrap gap-2'>
+          <h3 className='text-white text-[22px] font-bold'>{experience.title}</h3>
+          <span className='bg-[#915EFF]/20 border border-[#915EFF]/50 text-[#00cea8] text-[12px] font-semibold px-2.5 py-0.5 rounded-full'>
+            {experience.category}
+          </span>
+        </div>
         <p
-          className='text-secondary text-[16px] font-semibold'
-          style={{ margin: 0 }}
+          className='text-secondary text-[16px] font-medium'
+          style={{ margin: "4px 0 0 0" }}
         >
           {experience.company_name}
         </p>
@@ -46,7 +58,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-white-100 text-[14px] pl-1 tracking-wide leading-relaxed'
           >
             {point}
           </li>
@@ -61,10 +73,10 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
-          What I have done so far
+          My Journey &amp; Milestones
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
+          Experience &amp; Education.
         </h2>
       </motion.div>
 
